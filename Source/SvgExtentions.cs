@@ -46,21 +46,11 @@ namespace Svg
         {
             var result = string.Empty;
 
-            var currentCulture = Thread.CurrentThread.CurrentCulture;
-            try
+            using (var str = new StringWriter(CultureInfo.InvariantCulture))
+            using (var xml = new XmlTextWriter(str))
             {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-                using (var str = new StringWriter())
-                using (var xml = new XmlTextWriter(str))
-                {
-                    elem.Write(xml);
-                    result = str.ToString();
-                }
-            }
-            finally
-            {
-                // Make sure to set back the old culture even an error occurred.
-                Thread.CurrentThread.CurrentCulture = currentCulture;
+                elem.Write(xml);
+                result = str.ToString();
             }
 
             return result;
