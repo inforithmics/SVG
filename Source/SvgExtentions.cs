@@ -50,7 +50,7 @@ namespace Svg
             try
             {
                 Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-                using (var str = new StringWriter())
+                using (var str = new StringWriter(CultureInfo.InvariantCulture))
                 using (var xml = new XmlTextWriter(str))
                 {
                     elem.Write(xml);
