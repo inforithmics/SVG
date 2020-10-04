@@ -16,6 +16,7 @@ namespace Svg
     {
         static SvgElementFactory()
         {
+            // cache ElementInfo in static Field
             var svgTypes = from t in typeof(SvgDocument).Assembly.GetExportedTypes()
                 where t.GetCustomAttributes(typeof(SvgElementAttribute), true).Length > 0
                       && t.IsSubclassOf(typeof(SvgElement))
@@ -23,10 +24,12 @@ namespace Svg
 
             availableElements = svgTypes.ToList();
 
+            // cache ElementInfo without Svg in static field
             availableElementsWithoutSvg = availableElements
                 .Where(e => !e.ElementName.Equals("svg", StringComparison.OrdinalIgnoreCase))
                 .ToDictionary(e => e.ElementName, e => e);
 
+            // cache ElementInfo ElementTypes in static field
             availableElementsDictionary = new Dictionary<string, List<Type>>();
             foreach (var element in availableElements)
             {
@@ -54,7 +57,7 @@ namespace Svg
         /// <summary>
         /// Gets a list of available types that can be used when creating an <see cref="SvgElement"/>.
         /// </summary>
-        public Dictionary<string, List<Type>> AvailableElementsDictionary => availableElementsDictionary;
+        internal Dictionary<string, List<Type>> AvailableElementsDictionary => availableElementsDictionary;
 
         /// <summary>
         /// Creates an <see cref="SvgDocument"/> from the current node in the specified <see cref="XmlTextReader"/>.
