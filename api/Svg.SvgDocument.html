@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SvgDocument
    | SVG.NET API ">
-    <meta name="generator" content="docfx 2.49.0.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -61,11 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -165,9 +165,6 @@
       <a class="xref" href="Svg.SvgFragment.html#Svg_SvgFragment_DeepCopy__1">SvgFragment.DeepCopy&lt;T&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgFragment.html#Svg_SvgFragment_WriteStartElement_XmlTextWriter_">SvgFragment.WriteStartElement(XmlTextWriter)</a>
-    </div>
-    <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_AddStyle_System_String_System_String_System_Int32_">SvgElement.AddStyle(String, String, Int32)</a>
     </div>
     <div>
@@ -178,6 +175,9 @@
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_TryGetAttribute_System_String_System_String__">SvgElement.TryGetAttribute(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ElementNamespace">SvgElement.ElementNamespace</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ElementName">SvgElement.ElementName</a>
@@ -441,10 +441,7 @@
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Font">SvgElement.Font</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_PrivateFonts">SvgElement.PrivateFonts</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ValidateFontFamily_System_String_Svg_SvgDocument_">SvgElement.ValidateFontFamily(String, SvgDocument)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ValidateFontFamily_System_String_Svg_SvgDocument_Svg_SvgFontManager_">SvgElement.ValidateFontFamily(String, SvgDocument, SvgFontManager)</a>
     </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
@@ -487,32 +484,6 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public SvgDocument()</code></pre>
   </div>
-  <h3 id="fields">Fields
-  </h3>
-  
-  
-  <h4 id="Svg_SvgDocument_PointsPerInch" data-uid="Svg.SvgDocument.PointsPerInch">PointsPerInch</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly int PointsPerInch</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
   </h3>
   
@@ -536,6 +507,33 @@
     <tbody>
       <tr>
         <td><span class="xref">Uri</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Svg_SvgDocument_DisableDtdProcessing_" data-uid="Svg.SvgDocument.DisableDtdProcessing*"></a>
+  <h4 id="Svg_SvgDocument_DisableDtdProcessing" data-uid="Svg.SvgDocument.DisableDtdProcessing">DisableDtdProcessing</h4>
+  <div class="markdown level1 summary"><p>Skip the Dtd Processing for faster loading of svgs that have a DTD specified.
+For Example Adobe Illustrator svgs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool DisableDtdProcessing { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -619,6 +617,31 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.SvgFragment.html#Svg_SvgFragment_Overflow">SvgFragment.Overflow</a></div>
+  
+  
+  <a id="Svg_SvgDocument_PointsPerInch_" data-uid="Svg.SvgDocument.PointsPerInch*"></a>
+  <h4 id="Svg_SvgDocument_PointsPerInch" data-uid="Svg.SvgDocument.PointsPerInch">PointsPerInch</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PointsPerInch { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="Svg_SvgDocument_Ppi_" data-uid="Svg.SvgDocument.Ppi*"></a>
@@ -1749,6 +1772,35 @@ while keeping original SVG size ratio</p>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Write_XmlTextWriter_">SvgElement.Write(XmlTextWriter)</a></div>
+  
+  
+  <a id="Svg_SvgDocument_WriteStartElement_" data-uid="Svg.SvgDocument.WriteStartElement*"></a>
+  <h4 id="Svg_SvgDocument_WriteStartElement_XmlTextWriter_" data-uid="Svg.SvgDocument.WriteStartElement(XmlTextWriter)">WriteStartElement(XmlTextWriter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void WriteStartElement(XmlTextWriter writer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">XmlTextWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteStartElement_XmlTextWriter_">SvgElement.WriteStartElement(XmlTextWriter)</a></div>
   <h3 id="eii">Explicit Interface Implementations
   </h3>
   
@@ -1822,7 +1874,8 @@ while keeping original SVG size ratio</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
