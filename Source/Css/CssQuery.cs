@@ -14,7 +14,7 @@ namespace Svg.Css
 #if DEBUG
             var generator = new SelectorGenerator<SvgElement>(new SvgElementOps(elementFactory));
             Fizzler.Parser.Parse(selector.Text, generator);
-            var debug = generator.Selector(Enumerable.Repeat(elem, 1));
+            var debug = generator.Selector(Enumerable.Repeat(elem, 1)).ToList();
 #endif
 
             var input = Enumerable.Repeat(elem, 1);
@@ -22,9 +22,17 @@ namespace Svg.Css
 
             var func = GetFunc(selector, ops, ops.Universal());
             
-            var result = func(input).Distinct();
+            var result = func(input).Distinct().ToList();
 #if DEBUG
-            Debug.Assert(result.SequenceEqual(debug));
+            var areEqual = result.SequenceEqual(debug);
+            if (!areEqual)
+            {
+                Debug.Assert(false, "Not equal");
+            }
+            else
+            {
+                Debug.WriteLine("Equal");
+            }
 #endif
             return result;
         }
@@ -49,12 +57,57 @@ namespace Svg.Css
             Func<IEnumerable<SvgElement>,
                 IEnumerable<SvgElement>> inFunc)
         {
+            Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> result = inFunc;
+
             foreach (var it in selector)
             {
-                inFunc = GetFunc(it, ops, inFunc);
+                Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> combinatorFunc;
+                if (it.Delimiter == Combinator.Child.Delimiter)
+                {
+                    combinatorFunc = ops.Child();
+                }
+                else if (it.Delimiter == Combinator.Descendent.Delimiter)
+                {
+                    combinatorFunc = ops.Descendant();
+                }
+                else if (it.Delimiter == Combinator.Deep.Delimiter)
+                {
+                    throw new NotImplementedException();
+                }
+                else if (it.Delimiter == Combinator.AdjacentSibling.Delimiter)
+                {
+                    throw new NotImplementedException();
+                }
+                else if (it.Delimiter == Combinator.Sibling.Delimiter)
+                {
+                    combinatorFunc = ops.GeneralSibling();
+                }
+                else if (it.Delimiter == Combinator.Namespace.Delimiter)
+                {
+                    throw new NotImplementedException();
+                }
+                else if (it.Delimiter == Combinator.Column.Delimiter)
+                {
+                    throw new NotImplementedException();
+                }
+                else if (it.Delimiter == null)
+                {
+                    combinatorFunc = null;
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+
+                result = GetFunc(it.Selector, ops, result);
+                if (combinatorFunc != null)
+                {
+                    var result1 = result;
+                    result = f => combinatorFunc(result1(f));
+                }
             }
 
-            return inFunc;
+            return result;
         }
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> inFunc)

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Svg.Css
 {
-    internal class SvgElementOpsFunc
+    internal class SvgElementOpsFunc : ICssSelectorOps<SvgElement>
     {
         private readonly SvgElementFactory _elementFactory;
 
