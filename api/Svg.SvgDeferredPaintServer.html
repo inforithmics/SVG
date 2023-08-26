@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SvgDeferredPaintServer
    | SVG.NET API ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -89,15 +89,15 @@ but should be defined by the time the image needs to render.</p>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="Svg.SvgElement.html">SvgElement</a></div>
     <div class="level2"><a class="xref" href="Svg.SvgPaintServer.html">SvgPaintServer</a></div>
     <div class="level3"><span class="xref">SvgDeferredPaintServer</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Svg.ISvgTransformable.html">ISvgTransformable</a></div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
     <div><a class="xref" href="Svg.ISvgNode.html">ISvgNode</a></div>
   </div>
   <div class="inheritedMembers">
@@ -128,6 +128,12 @@ but should be defined by the time the image needs to render.</p>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_TryGetAttribute_System_String_System_String__">SvgElement.TryGetAttribute(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_HttpClient">SvgElement.HttpClient</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Namespaces">SvgElement.Namespaces</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ElementNamespace">SvgElement.ElementNamespace</a>
@@ -184,22 +190,7 @@ but should be defined by the time the image needs to render.</p>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_CustomAttributes">SvgElement.CustomAttributes</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_PushTransforms_Svg_ISvgRenderer_">SvgElement.PushTransforms(ISvgRenderer)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_PopTransforms_Svg_ISvgRenderer_">SvgElement.PopTransforms(ISvgRenderer)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Svg_ISvgTransformable_PushTransforms_Svg_ISvgRenderer_">SvgElement.ISvgTransformable.PushTransforms(ISvgRenderer)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Svg_ISvgTransformable_PopTransforms_Svg_ISvgRenderer_">SvgElement.ISvgTransformable.PopTransforms(ISvgRenderer)</a>
-    </div>
-    <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Transforms">SvgElement.Transforms</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_TransformedBounds_RectangleF_">SvgElement.TransformedBounds(RectangleF)</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ID">SvgElement.ID</a>
@@ -220,40 +211,28 @@ but should be defined by the time the image needs to render.</p>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_RemoveElement_Svg_SvgElement_">SvgElement.RemoveElement(SvgElement)</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_InitialiseFromXML_XmlTextReader_Svg_SvgDocument_">SvgElement.InitialiseFromXML(XmlTextReader, SvgDocument)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_RenderElement_Svg_ISvgRenderer_">SvgElement.RenderElement(ISvgRenderer)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_InitialiseFromXML_System_Xml_XmlReader_Svg_SvgDocument_">SvgElement.InitialiseFromXML(XmlReader, SvgDocument)</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ShouldWriteElement">SvgElement.ShouldWriteElement()</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteStartElement_XmlTextWriter_">SvgElement.WriteStartElement(XmlTextWriter)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteStartElement_System_Xml_XmlWriter_">SvgElement.WriteStartElement(XmlWriter)</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteEndElement_XmlTextWriter_">SvgElement.WriteEndElement(XmlTextWriter)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteEndElement_System_Xml_XmlWriter_">SvgElement.WriteEndElement(XmlWriter)</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteAttributes_XmlTextWriter_">SvgElement.WriteAttributes(XmlTextWriter)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteAttributes_System_Xml_XmlWriter_">SvgElement.WriteAttributes(XmlWriter)</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_AutoPublishEvents">SvgElement.AutoPublishEvents</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Write_XmlTextWriter_">SvgElement.Write(XmlTextWriter)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Write_System_Xml_XmlWriter_">SvgElement.Write(XmlWriter)</a>
     </div>
     <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteChildren_XmlTextWriter_">SvgElement.WriteChildren(XmlTextWriter)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_RenderChildren_Svg_ISvgRenderer_">SvgElement.RenderChildren(ISvgRenderer)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_AddPaths_Svg_SvgElement_GraphicsPath_">SvgElement.AddPaths(SvgElement, GraphicsPath)</a>
-    </div>
-    <div>
-      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_GetPaths_Svg_SvgElement_Svg_ISvgRenderer_">SvgElement.GetPaths(SvgElement, ISvgRenderer)</a>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_WriteChildren_System_Xml_XmlWriter_">SvgElement.WriteChildren(XmlWriter)</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Clone">SvgElement.Clone()</a>
@@ -317,6 +296,33 @@ but should be defined by the time the image needs to render.</p>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_RaiseMouseScroll_System_Object_Svg_MouseScrollArg_">SvgElement.RaiseMouseScroll(Object, MouseScrollArg)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_PushTransforms_Svg_ISvgRenderer_">SvgElement.PushTransforms(ISvgRenderer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_PopTransforms_Svg_ISvgRenderer_">SvgElement.PopTransforms(ISvgRenderer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Svg_ISvgTransformable_PushTransforms_Svg_ISvgRenderer_">SvgElement.ISvgTransformable.PushTransforms(ISvgRenderer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_Svg_ISvgTransformable_PopTransforms_Svg_ISvgRenderer_">SvgElement.ISvgTransformable.PopTransforms(ISvgRenderer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_TransformedBounds_System_Drawing_RectangleF_">SvgElement.TransformedBounds(RectangleF)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_RenderElement_Svg_ISvgRenderer_">SvgElement.RenderElement(ISvgRenderer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_RenderChildren_Svg_ISvgRenderer_">SvgElement.RenderChildren(ISvgRenderer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_AddPaths_Svg_SvgElement_GraphicsPath_">SvgElement.AddPaths(SvgElement, GraphicsPath)</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_GetPaths_Svg_SvgElement_Svg_ISvgRenderer_">SvgElement.GetPaths(SvgElement, ISvgRenderer)</a>
     </div>
     <div>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_IsPathDirty">SvgElement.IsPathDirty</a>
@@ -415,28 +421,34 @@ but should be defined by the time the image needs to render.</p>
       <a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_ValidateFontFamily_System_String_Svg_SvgDocument_Svg_SvgFontManager_">SvgElement.ValidateFontFamily(String, SvgDocument, SvgFontManager)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Svg.html">Svg</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Svg.dll</h6>
   <h5 id="Svg_SvgDeferredPaintServer_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SvgDeferredPaintServer : SvgPaintServer, ISvgElement, ISvgTransformable, ICloneable, ISvgNode</code></pre>
+    <pre><code class="lang-csharp hljs">[TypeConverter(typeof(SvgDeferredPaintServerFactory))]
+public class SvgDeferredPaintServer : SvgPaintServer, ISvgTransformable, ICloneable, ISvgNode</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer__ctor.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L27">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer__ctor_" data-uid="Svg.SvgDeferredPaintServer.#ctor*"></a>
   <h4 id="Svg_SvgDeferredPaintServer__ctor" data-uid="Svg.SvgDeferredPaintServer.#ctor">SvgDeferredPaintServer()</h4>
   <div class="markdown level1 summary"></div>
@@ -445,8 +457,13 @@ but should be defined by the time the image needs to render.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public SvgDeferredPaintServer()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer__ctor_Svg_SvgDocument_System_String_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.%23ctor(Svg.SvgDocument%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L31">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer__ctor_" data-uid="Svg.SvgDeferredPaintServer.#ctor*"></a>
   <h4 id="Svg_SvgDeferredPaintServer__ctor_Svg_SvgDocument_System_String_" data-uid="Svg.SvgDeferredPaintServer.#ctor(Svg.SvgDocument,System.String)">SvgDeferredPaintServer(SvgDocument, String)</h4>
   <div class="markdown level1 summary"></div>
@@ -472,14 +489,19 @@ public SvgDeferredPaintServer(SvgDocument document, string id)</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">id</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer__ctor_System_String_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L42">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer__ctor_" data-uid="Svg.SvgDeferredPaintServer.#ctor*"></a>
   <h4 id="Svg_SvgDeferredPaintServer__ctor_System_String_" data-uid="Svg.SvgDeferredPaintServer.#ctor(System.String)">SvgDeferredPaintServer(String)</h4>
   <div class="markdown level1 summary"><p>Initializes new instance of <a class="xref" href="Svg.SvgDeferredPaintServer.html">SvgDeferredPaintServer</a> class.</p>
@@ -500,15 +522,20 @@ public SvgDeferredPaintServer(SvgDocument document, string id)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">id</span></td>
         <td><p>&lt;FuncIRI&gt;, &lt;IRI&gt; or &quot;currentColor&quot;.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer__ctor_System_String_Svg_SvgPaintServer_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.%23ctor(System.String%2CSvg.SvgPaintServer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L52">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer__ctor_" data-uid="Svg.SvgDeferredPaintServer.#ctor*"></a>
   <h4 id="Svg_SvgDeferredPaintServer__ctor_System_String_Svg_SvgPaintServer_" data-uid="Svg.SvgDeferredPaintServer.#ctor(System.String,Svg.SvgPaintServer)">SvgDeferredPaintServer(String, SvgPaintServer)</h4>
   <div class="markdown level1 summary"><p>Initializes new instance of <a class="xref" href="Svg.SvgDeferredPaintServer.html">SvgDeferredPaintServer</a> class.</p>
@@ -529,7 +556,7 @@ public SvgDeferredPaintServer(SvgDocument document, string id)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">id</span></td>
         <td><p>&lt;FuncIRI&gt;, &lt;IRI&gt; or &quot;currentColor&quot;.</p>
 </td>
@@ -544,8 +571,13 @@ public SvgDeferredPaintServer(SvgDocument document, string id)</code></pre>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_DeferredId.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.DeferredId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L23">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_DeferredId_" data-uid="Svg.SvgDeferredPaintServer.DeferredId*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_DeferredId" data-uid="Svg.SvgDeferredPaintServer.DeferredId">DeferredId</h4>
   <div class="markdown level1 summary"></div>
@@ -564,13 +596,18 @@ public SvgDeferredPaintServer(SvgDocument document, string id)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_Document.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.Document%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L20">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_Document_" data-uid="Svg.SvgDeferredPaintServer.Document*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_Document" data-uid="Svg.SvgDeferredPaintServer.Document">Document</h4>
   <div class="markdown level1 summary"></div>
@@ -595,8 +632,13 @@ public SvgDocument Document { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_FallbackServer.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.FallbackServer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L25">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_FallbackServer_" data-uid="Svg.SvgDeferredPaintServer.FallbackServer*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_FallbackServer" data-uid="Svg.SvgDeferredPaintServer.FallbackServer">FallbackServer</h4>
   <div class="markdown level1 summary"></div>
@@ -622,8 +664,13 @@ public SvgDocument Document { get; set; }</code></pre>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_DeepCopy.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.DeepCopy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L84">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_DeepCopy_" data-uid="Svg.SvgDeferredPaintServer.DeepCopy*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_DeepCopy" data-uid="Svg.SvgDeferredPaintServer.DeepCopy">DeepCopy()</h4>
   <div class="markdown level1 summary"></div>
@@ -649,8 +696,13 @@ public SvgDocument Document { get; set; }</code></pre>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_DeepCopy">SvgElement.DeepCopy()</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_DeepCopy__1.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.DeepCopy%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L89">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_DeepCopy_" data-uid="Svg.SvgDeferredPaintServer.DeepCopy*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_DeepCopy__1" data-uid="Svg.SvgDeferredPaintServer.DeepCopy``1">DeepCopy&lt;T&gt;()</h4>
   <div class="markdown level1 summary"></div>
@@ -692,8 +744,13 @@ public SvgDocument Document { get; set; }</code></pre>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.SvgElement.html#Svg_SvgElement_DeepCopy__1">SvgElement.DeepCopy&lt;T&gt;()</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_EnsureServer_Svg_SvgElement_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.EnsureServer(Svg.SvgElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L58">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_EnsureServer_" data-uid="Svg.SvgDeferredPaintServer.EnsureServer*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_EnsureServer_Svg_SvgElement_" data-uid="Svg.SvgDeferredPaintServer.EnsureServer(Svg.SvgElement)">EnsureServer(SvgElement)</h4>
   <div class="markdown level1 summary"></div>
@@ -719,8 +776,13 @@ public SvgDocument Document { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L98">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_Equals_" data-uid="Svg.SvgDeferredPaintServer.Equals*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_Equals_System_Object_" data-uid="Svg.SvgDeferredPaintServer.Equals(System.Object)">Equals(Object)</h4>
   <div class="markdown level1 summary"></div>
@@ -740,7 +802,7 @@ public SvgDocument Document { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></td>
         <td><span class="parametername">obj</span></td>
         <td></td>
       </tr>
@@ -756,15 +818,20 @@ public SvgDocument Document { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a></div>
-  
-  
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_GetBrush_Svg_SvgVisualElement_Svg_ISvgRenderer_System_Single_System_Boolean_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.GetBrush(Svg.SvgVisualElement%2CSvg.ISvgRenderer%2CSystem.Single%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.Drawing.cs/#L8">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_GetBrush_" data-uid="Svg.SvgDeferredPaintServer.GetBrush*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_GetBrush_Svg_SvgVisualElement_Svg_ISvgRenderer_System_Single_System_Boolean_" data-uid="Svg.SvgDeferredPaintServer.GetBrush(Svg.SvgVisualElement,Svg.ISvgRenderer,System.Single,System.Boolean)">GetBrush(SvgVisualElement, ISvgRenderer, Single, Boolean)</h4>
   <div class="markdown level1 summary"></div>
@@ -794,12 +861,12 @@ public SvgDocument Document { get; set; }</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td><span class="parametername">opacity</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">forStroke</span></td>
         <td></td>
       </tr>
@@ -822,8 +889,13 @@ public SvgDocument Document { get; set; }</code></pre>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.SvgPaintServer.html#Svg_SvgPaintServer_GetBrush_Svg_SvgVisualElement_Svg_ISvgRenderer_System_Single_System_Boolean_">SvgPaintServer.GetBrush(SvgVisualElement, ISvgRenderer, Single, Boolean)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_GetHashCode.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L107">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_GetHashCode_" data-uid="Svg.SvgDeferredPaintServer.GetHashCode*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_GetHashCode" data-uid="Svg.SvgDeferredPaintServer.GetHashCode">GetHashCode()</h4>
   <div class="markdown level1 summary"></div>
@@ -842,15 +914,20 @@ public SvgDocument Document { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a></div>
-  
-  
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_ToString.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L112">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_ToString_" data-uid="Svg.SvgDeferredPaintServer.ToString*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_ToString" data-uid="Svg.SvgDeferredPaintServer.ToString">ToString()</h4>
   <div class="markdown level1 summary"></div>
@@ -869,15 +946,20 @@ public SvgDocument Document { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.SvgPaintServer.html#Svg_SvgPaintServer_ToString">SvgPaintServer.ToString()</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer_TryGet__1_Svg_SvgPaintServer_Svg_SvgElement_.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer.TryGet%60%601(Svg.SvgPaintServer%2CSvg.SvgElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.cs/#L121">View Source</a>
+  </span>
   <a id="Svg_SvgDeferredPaintServer_TryGet_" data-uid="Svg.SvgDeferredPaintServer.TryGet*"></a>
   <h4 id="Svg_SvgDeferredPaintServer_TryGet__1_Svg_SvgPaintServer_Svg_SvgElement_" data-uid="Svg.SvgDeferredPaintServer.TryGet``1(Svg.SvgPaintServer,Svg.SvgElement)">TryGet&lt;T&gt;(SvgPaintServer, SvgElement)</h4>
   <div class="markdown level1 summary"></div>
@@ -944,10 +1026,23 @@ public SvgDocument Document { get; set; }</code></pre>
       <a class="xref" href="Svg.ISvgTransformable.html">ISvgTransformable</a>
   </div>
   <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icloneable">System.ICloneable</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">System.ICloneable</a>
   </div>
   <div>
       <a class="xref" href="Svg.ISvgNode.html">ISvgNode</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Svg.SvgExtentions.html#Svg_SvgExtentions_GetXML_Svg_SvgElement_">SvgExtentions.GetXML(SvgElement)</a>
+  </div>
+  <div>
+      <a class="xref" href="Svg.SvgExtentions.html#Svg_SvgExtentions_HasNonEmptyCustomAttribute_Svg_SvgElement_System_String_">SvgExtentions.HasNonEmptyCustomAttribute(SvgElement, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Svg.SvgExtentions.html#Svg_SvgExtentions_ApplyRecursive_Svg_SvgElement_System_Action_Svg_SvgElement__">SvgExtentions.ApplyRecursive(SvgElement, Action&lt;SvgElement&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Svg.SvgExtentions.html#Svg_SvgExtentions_ApplyRecursiveDepthFirst_Svg_SvgElement_System_Action_Svg_SvgElement__">SvgExtentions.ApplyRecursiveDepthFirst(SvgElement, Action&lt;SvgElement&gt;)</a>
   </div>
 </article>
           </div>
@@ -956,6 +1051,12 @@ public SvgDocument Document { get; set; }</code></pre>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_SvgDeferredPaintServer.md&amp;value=---%0Auid%3A%20Svg.SvgDeferredPaintServer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Painting/SvgDeferredPaintServer.Drawing.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

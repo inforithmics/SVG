@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SvgArcSegment
    | SVG.NET API ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -87,14 +87,17 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="Svg.Pathing.SvgPathSegment.html">SvgPathSegment</a></div>
     <div class="level2"><span class="xref">SvgArcSegment</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_Start">SvgPathSegment.Start</a>
+      <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_NaN">SvgPathSegment.NaN</a>
+    </div>
+    <div>
+      <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_IsRelative">SvgPathSegment.IsRelative</a>
     </div>
     <div>
       <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_End">SvgPathSegment.End</a>
@@ -103,41 +106,56 @@
       <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_Clone">SvgPathSegment.Clone()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
+      <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_Start">SvgPathSegment.Start</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+      <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_Reflect_System_Drawing_PointF_System_Drawing_PointF_">SvgPathSegment.Reflect(PointF, PointF)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+      <a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_ToAbsolute_System_Drawing_PointF_System_Boolean_System_Drawing_PointF_">SvgPathSegment.ToAbsolute(PointF, Boolean, PointF)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Svg.Pathing.html">Svg.Pathing</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Svg.dll</h6>
   <h5 id="Svg_Pathing_SvgArcSegment_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class SvgArcSegment : SvgPathSegment</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment__ctor_System_Drawing_PointF_System_Single_System_Single_System_Single_Svg_Pathing_SvgArcSize_Svg_Pathing_SvgArcSweep_System_Drawing_PointF_.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.%23ctor(System.Drawing.PointF%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSvg.Pathing.SvgArcSize%2CSvg.Pathing.SvgArcSweep%2CSystem.Drawing.PointF)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L38">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment__ctor_" data-uid="Svg.Pathing.SvgArcSegment.#ctor*"></a>
-  <h4 id="Svg_Pathing_SvgArcSegment__ctor_PointF_System_Single_System_Single_System_Single_Svg_Pathing_SvgArcSize_Svg_Pathing_SvgArcSweep_PointF_" data-uid="Svg.Pathing.SvgArcSegment.#ctor(PointF,System.Single,System.Single,System.Single,Svg.Pathing.SvgArcSize,Svg.Pathing.SvgArcSweep,PointF)">SvgArcSegment(PointF, Single, Single, Single, SvgArcSize, SvgArcSweep, PointF)</h4>
+  <h4 id="Svg_Pathing_SvgArcSegment__ctor_System_Drawing_PointF_System_Single_System_Single_System_Single_Svg_Pathing_SvgArcSize_Svg_Pathing_SvgArcSweep_System_Drawing_PointF_" data-uid="Svg.Pathing.SvgArcSegment.#ctor(System.Drawing.PointF,System.Single,System.Single,System.Single,Svg.Pathing.SvgArcSize,Svg.Pathing.SvgArcSweep,System.Drawing.PointF)">SvgArcSegment(PointF, Single, Single, Single, SvgArcSize, SvgArcSweep, PointF)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SvgArcSegment(PointF start, float radiusX, float radiusY, float angle, SvgArcSize size, SvgArcSweep sweep, PointF end)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use new constructor.&quot;)]
+public SvgArcSegment(PointF start, float radiusX, float radiusY, float angle, SvgArcSize size, SvgArcSweep sweep, PointF end)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -150,22 +168,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">PointF</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.pointf">PointF</a></td>
         <td><span class="parametername">start</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td><span class="parametername">radiusX</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td><span class="parametername">radiusY</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td><span class="parametername">angle</span></td>
         <td></td>
       </tr>
@@ -180,7 +198,69 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">PointF</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.pointf">PointF</a></td>
+        <td><span class="parametername">end</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment__ctor_System_Single_System_Single_System_Single_Svg_Pathing_SvgArcSize_Svg_Pathing_SvgArcSweep_System_Boolean_System_Drawing_PointF_.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.%23ctor(System.Single%2CSystem.Single%2CSystem.Single%2CSvg.Pathing.SvgArcSize%2CSvg.Pathing.SvgArcSweep%2CSystem.Boolean%2CSystem.Drawing.PointF)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L21">View Source</a>
+  </span>
+  <a id="Svg_Pathing_SvgArcSegment__ctor_" data-uid="Svg.Pathing.SvgArcSegment.#ctor*"></a>
+  <h4 id="Svg_Pathing_SvgArcSegment__ctor_System_Single_System_Single_System_Single_Svg_Pathing_SvgArcSize_Svg_Pathing_SvgArcSweep_System_Boolean_System_Drawing_PointF_" data-uid="Svg.Pathing.SvgArcSegment.#ctor(System.Single,System.Single,System.Single,Svg.Pathing.SvgArcSize,Svg.Pathing.SvgArcSweep,System.Boolean,System.Drawing.PointF)">SvgArcSegment(Single, Single, Single, SvgArcSize, SvgArcSweep, Boolean, PointF)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SvgArcSegment(float radiusX, float radiusY, float angle, SvgArcSize size, SvgArcSweep sweep, bool isRelative, PointF end)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><span class="parametername">radiusX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><span class="parametername">radiusY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><span class="parametername">angle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Svg.Pathing.SvgArcSize.html">SvgArcSize</a></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Svg.Pathing.SvgArcSweep.html">SvgArcSweep</a></td>
+        <td><span class="parametername">sweep</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">isRelative</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.pointf">PointF</a></td>
         <td><span class="parametername">end</span></td>
         <td></td>
       </tr>
@@ -188,8 +268,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_Angle.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.Angle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L15">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_Angle_" data-uid="Svg.Pathing.SvgArcSegment.Angle*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_Angle" data-uid="Svg.Pathing.SvgArcSegment.Angle">Angle</h4>
   <div class="markdown level1 summary"></div>
@@ -208,13 +293,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_RadiusX.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.RadiusX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L11">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_RadiusX_" data-uid="Svg.Pathing.SvgArcSegment.RadiusX*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_RadiusX" data-uid="Svg.Pathing.SvgArcSegment.RadiusX">RadiusX</h4>
   <div class="markdown level1 summary"></div>
@@ -233,13 +323,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_RadiusY.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.RadiusY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L13">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_RadiusY_" data-uid="Svg.Pathing.SvgArcSegment.RadiusY*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_RadiusY" data-uid="Svg.Pathing.SvgArcSegment.RadiusY">RadiusY</h4>
   <div class="markdown level1 summary"></div>
@@ -258,13 +353,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_Size.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L19">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_Size_" data-uid="Svg.Pathing.SvgArcSegment.Size*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_Size" data-uid="Svg.Pathing.SvgArcSegment.Size">Size</h4>
   <div class="markdown level1 summary"></div>
@@ -288,8 +388,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_Sweep.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.Sweep%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L17">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_Sweep_" data-uid="Svg.Pathing.SvgArcSegment.Sweep*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_Sweep" data-uid="Svg.Pathing.SvgArcSegment.Sweep">Sweep</h4>
   <div class="markdown level1 summary"></div>
@@ -315,15 +420,21 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_AddToPath_GraphicsPath_.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.AddToPath(GraphicsPath)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.Drawing.cs/#L116">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_AddToPath_" data-uid="Svg.Pathing.SvgArcSegment.AddToPath*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_AddToPath_GraphicsPath_" data-uid="Svg.Pathing.SvgArcSegment.AddToPath(GraphicsPath)">AddToPath(GraphicsPath)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void AddToPath(GraphicsPath graphicsPath)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use new AddToPath.&quot;)]
+public override void AddToPath(GraphicsPath graphicsPath)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -344,8 +455,72 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_AddToPath_GraphicsPath_">SvgPathSegment.AddToPath(GraphicsPath)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_AddToPath_GraphicsPath_System_Drawing_PointF_Svg_Pathing_SvgPathSegmentList_.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.AddToPath(GraphicsPath%2CSystem.Drawing.PointF%2CSvg.Pathing.SvgPathSegmentList)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.Drawing.cs/#L23">View Source</a>
+  </span>
+  <a id="Svg_Pathing_SvgArcSegment_AddToPath_" data-uid="Svg.Pathing.SvgArcSegment.AddToPath*"></a>
+  <h4 id="Svg_Pathing_SvgArcSegment_AddToPath_GraphicsPath_System_Drawing_PointF_Svg_Pathing_SvgPathSegmentList_" data-uid="Svg.Pathing.SvgArcSegment.AddToPath(GraphicsPath,System.Drawing.PointF,Svg.Pathing.SvgPathSegmentList)">AddToPath(GraphicsPath, PointF, SvgPathSegmentList)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override PointF AddToPath(GraphicsPath graphicsPath, PointF start, SvgPathSegmentList parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GraphicsPath</span></td>
+        <td><span class="parametername">graphicsPath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.pointf">PointF</a></td>
+        <td><span class="parametername">start</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Svg.Pathing.SvgPathSegmentList.html">SvgPathSegmentList</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.pointf">PointF</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Svg.Pathing.SvgPathSegment.html#Svg_Pathing_SvgPathSegment_AddToPath_GraphicsPath_System_Drawing_PointF_Svg_Pathing_SvgPathSegmentList_">SvgPathSegment.AddToPath(GraphicsPath, PointF, SvgPathSegmentList)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment_ToString.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.cs/#L31">View Source</a>
+  </span>
   <a id="Svg_Pathing_SvgArcSegment_ToString_" data-uid="Svg.Pathing.SvgArcSegment.ToString*"></a>
   <h4 id="Svg_Pathing_SvgArcSegment_ToString" data-uid="Svg.Pathing.SvgArcSegment.ToString">ToString()</h4>
   <div class="markdown level1 summary"></div>
@@ -364,13 +539,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a></div>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a></div>
 </article>
           </div>
           
@@ -378,6 +553,12 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/inforithmics/SVG/new/master/apiSpec/new?filename=Svg_Pathing_SvgArcSegment.md&amp;value=---%0Auid%3A%20Svg.Pathing.SvgArcSegment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/inforithmics/SVG/blob/master/Source/Paths/SvgArcSegment.Drawing.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
