@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
+using System.Xml.Linq;
 using Fizzler;
 
 namespace Svg.Css
@@ -16,6 +19,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> Type(NamespacePrefix prefix, string name)
         {
+            Debug.WriteLine(nameof(Type) + name);
             if (_elementFactory.AvailableElementsDictionary.TryGetValue(name, out var types))
             {
                 return nodes => nodes.Where(n => types.Contains(n.GetType()));
@@ -25,26 +29,31 @@ namespace Svg.Css
 
         public Selector<SvgElement> Universal(NamespacePrefix prefix)
         {
+            Debug.WriteLine(nameof(Universal));
             return nodes => nodes;
         }
 
         public Selector<SvgElement> Id(string id)
         {
+            Debug.WriteLine(nameof(Id) + id);
             return nodes => nodes.Where(n => n.ID == id);
         }
 
         public Selector<SvgElement> Class(string clazz)
         {
+            Debug.WriteLine(nameof(Class) + clazz);
             return AttributeIncludes(NamespacePrefix.None, "class", clazz);
         }
 
         public Selector<SvgElement> AttributeExists(NamespacePrefix prefix, string name)
         {
+            Debug.WriteLine(nameof(AttributeExists) + name);
             return nodes => nodes.Where(n => n.ContainsAttribute(name));
         }
 
         public Selector<SvgElement> AttributeExact(NamespacePrefix prefix, string name, string value)
         {
+            Debug.WriteLine(nameof(AttributeExact) + name + value);
             return nodes => nodes.Where(n =>
             {
                 string val = null;
@@ -54,6 +63,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> AttributeIncludes(NamespacePrefix prefix, string name, string value)
         {
+            Debug.WriteLine(nameof(AttributeIncludes) + name + value);
             return nodes => nodes.Where(n =>
             {
                 string val = null;
@@ -63,6 +73,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> AttributeDashMatch(NamespacePrefix prefix, string name, string value)
         {
+            Debug.WriteLine(nameof(AttributeDashMatch) + name + value);
             return string.IsNullOrEmpty(value)
                  ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
                  : (nodes => nodes.Where(n =>
@@ -74,6 +85,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> AttributePrefixMatch(NamespacePrefix prefix, string name, string value)
         {
+            Debug.WriteLine(nameof(AttributePrefixMatch) + name + value);
             return string.IsNullOrEmpty(value)
                  ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
                  : (nodes => nodes.Where(n =>
@@ -85,6 +97,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> AttributeSuffixMatch(NamespacePrefix prefix, string name, string value)
         {
+            Debug.WriteLine(nameof(AttributeSuffixMatch) + name + value);
             return string.IsNullOrEmpty(value)
                  ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
                  : (nodes => nodes.Where(n =>
@@ -96,6 +109,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> AttributeSubstring(NamespacePrefix prefix, string name, string value)
         {
+            Debug.WriteLine(nameof(AttributeSubstring) + name + value);
             return string.IsNullOrEmpty(value)
                  ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
                  : (nodes => nodes.Where(n =>
@@ -107,11 +121,13 @@ namespace Svg.Css
 
         public Selector<SvgElement> FirstChild()
         {
+            Debug.WriteLine(nameof(FirstChild));
             return nodes => nodes.Where(n => n.Parent == null || n.Parent.Children.First() == n);
         }
 
         public Selector<SvgElement> LastChild()
         {
+            Debug.WriteLine(nameof(LastChild));
             return nodes => nodes.Where(n => n.Parent == null || n.Parent.Children.Last() == n);
         }
 
@@ -125,26 +141,31 @@ namespace Svg.Css
 
         public Selector<SvgElement> NthChild(int a, int b)
         {
+            Debug.WriteLine(nameof(NthChild) + a + b);
             return nodes => nodes.Where(n => n.Parent != null && GetByIds(n.Parent.Children, (from i in Enumerable.Range(0, n.Parent.Children.Count / a) select a * i + b)).Contains(n));
         }
 
         public Selector<SvgElement> OnlyChild()
         {
+            Debug.WriteLine(nameof(OnlyChild));
             return nodes => nodes.Where(n => n.Parent == null || n.Parent.Children.Count == 1);
         }
 
         public Selector<SvgElement> Empty()
         {
+            Debug.WriteLine(nameof(Empty));
             return nodes => nodes.Where(n => n.Children.Count == 0);
         }
 
         public Selector<SvgElement> Child()
         {
+            Debug.WriteLine(nameof(Child));
             return nodes => nodes.SelectMany(n => n.Children);
         }
 
         public Selector<SvgElement> Descendant()
         {
+            Debug.WriteLine(nameof(Descendant));
             return nodes => nodes.SelectMany(n => Descendants(n));
         }
 
@@ -162,11 +183,13 @@ namespace Svg.Css
 
         public Selector<SvgElement> Adjacent()
         {
+            Debug.WriteLine(nameof(Adjacent));
             return nodes => nodes.SelectMany(n => ElementsAfterSelf(n).Take(1));
         }
 
         public Selector<SvgElement> GeneralSibling()
         {
+            Debug.WriteLine(nameof(GeneralSibling));
             return nodes => nodes.SelectMany(n => ElementsAfterSelf(n));
         }
 
@@ -177,6 +200,7 @@ namespace Svg.Css
 
         public Selector<SvgElement> NthLastChild(int a, int b)
         {
+            Debug.WriteLine(nameof(NthLastChild));
             throw new NotImplementedException();
         }
     }

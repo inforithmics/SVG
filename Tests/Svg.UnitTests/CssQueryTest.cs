@@ -1,8 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Text;
+using System.Xml;
 using Svg.Css;
 using NUnit.Framework;
 using ExCSS;
+using Fizzler;
 
 namespace Svg.UnitTests
 {
@@ -103,6 +109,64 @@ namespace Svg.UnitTests
                     actual.Append(declaration.Name).Append(":").Append(declaration.Value).Append(";");
 
             Assert.AreEqual(expected, actual.ToString());
+        }
+
+        ////[TestCase("*.test2", "struct-use-11-f")]
+        [Test]
+        [TestCase("#testId.test1", "struct-use-11-f")]
+        public void RunSelectorTests(string selector, string baseName)
+        {
+            var elementFactory = new SvgElementFactory();
+            var testSuite = Path.Combine(ImageTestDataSource.SuiteTestsFolder, "W3CTestSuite");
+            string basePath = testSuite;
+            var svgPath = Path.Combine(basePath, "svg", baseName + ".svg");
+            var styles = new List<ISvgNode>();
+            var svgDocument = SvgDocument.Create<SvgDocument>(new XmlTextReader(File.Open(svgPath, FileMode.Open)), elementFactory, styles);
+
+            var rootNode = new NonSvgElement();
+            rootNode.Children.Add(svgDocument);
+
+            Debug.WriteLine(Environment.NewLine);
+            Debug.WriteLine("Fizzler:\r\n");
+            var fizzlerElements = QuerySelectorFizzlerAll(rootNode, selector, elementFactory);
+            Debug.WriteLine(Environment.NewLine);
+            Debug.WriteLine("ExCss:\r\n");
+            var exCssElements = QuerySelectorExCssAll(rootNode, selector, elementFactory);
+            Debug.WriteLine(Environment.NewLine);
+
+            var areEqual = fizzlerElements.SequenceEqual(exCssElements);
+            if (!areEqual)
+            {
+                Assert.IsTrue(areEqual, "should select the same elements");
+            }
+            else
+            {
+                Assert.IsTrue(areEqual, "should select the same elements");
+            }
+        }
+
+        private List<SvgElement> QuerySelectorExCssAll(NonSvgElement elem, string selector, SvgElementFactory elementFactory)
+        {
+            var stylesheetParser = new StylesheetParser(true, true);
+            var stylesheet = stylesheetParser.Parse(selector + " {color:black}");
+            var exCssSelector = stylesheet.StyleRules.First().Selector;
+            var input = Enumerable.Repeat(elem, 1);
+            var ops = new SvgElementOpsFunc(elementFactory);
+
+            var func = CssQuery.GetFunc(exCssSelector, ops, ops.Universal());
+            var descendants = ops.Descendant();
+            var func1 = func;
+            func = f => descendants(func1(f));
+            
+            var result = func(input).Distinct().ToList();
+            return result;
+        }
+
+        private List<SvgElement> QuerySelectorFizzlerAll(NonSvgElement elem, string selector, SvgElementFactory elementFactory)
+        {
+            var generator = new SelectorGenerator<SvgElement>(new SvgElementOps(elementFactory));
+            Fizzler.Parser.Parse(selector, generator);
+            return generator.Selector(Enumerable.Repeat(elem, 1)).ToList();
         }
     }
 }

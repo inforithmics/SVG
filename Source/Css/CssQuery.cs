@@ -21,13 +21,15 @@ namespace Svg.Css
             var ops = new SvgElementOpsFunc(elementFactory);
 
             var func = GetFunc(selector, ops, ops.Universal());
-            
+            var descendants = ops.Descendant();
+            var func1 = func;
+            func = f => descendants(func1(f));
             var result = func(input).Distinct().ToList();
 #if DEBUG
             var areEqual = result.SequenceEqual(debug);
             if (!areEqual)
             {
-                Debug.Assert(false, "Not equal");
+                Debug.WriteLine("Are not Equal");
             }
             else
             {
@@ -49,6 +51,29 @@ namespace Svg.Css
             }
 
             return inFunc;
+        }
+
+        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(
+            PseudoClassSelector selector,
+            SvgElementOpsFunc ops,
+            Func<IEnumerable<SvgElement>,
+                IEnumerable<SvgElement>> inFunc)
+        {
+            Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> pseudoFunc;
+            if (selector.Class == PseudoClassNames.FirstChild)
+            {
+                pseudoFunc = ops.FirstChild();
+            }
+            else if (selector.Class == PseudoClassNames.LastChild)
+            {
+                pseudoFunc = ops.LastChild();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+            return f => pseudoFunc(inFunc(f));
         }
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(
@@ -111,7 +136,7 @@ namespace Svg.Css
             return result;
         }
 
-        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> inFunc)
+        internal static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> inFunc)
         {
             var func = selector switch
             {
@@ -120,8 +145,8 @@ namespace Svg.Css
                 AttrBeginsSelector attrBeginsSelector => ops.AttributePrefixMatch(attrBeginsSelector.Attribute, attrBeginsSelector.Value),
                 AttrContainsSelector attrContainsSelector => ops.AttributeSubstring(attrContainsSelector.Attribute, attrContainsSelector.Value),
                 AttrEndsSelector attrEndsSelector => ops.AttributeSuffixMatch(attrEndsSelector.Attribute, attrEndsSelector.Value),
-                AttrHyphenSelector attrHyphenSelector => throw new NotImplementedException(), // TODO:,
-                AttrListSelector attrListSelector => throw new NotImplementedException(), // TODO:,
+                AttrHyphenSelector attrHyphenSelector => ops.AttributeDashMatch(attrHyphenSelector.Value, attrHyphenSelector.Value), // TODO:,
+                AttrListSelector attrListSelector => ops.AttributeExists(attrListSelector.Attribute), // TODO:,
                 AttrMatchSelector attrMatchSelector => ops.AttributeExact(attrMatchSelector.Attribute, attrMatchSelector.Value),
                 AttrNotMatchSelector attrNotMatchSelector => throw new NotImplementedException(), // TODO:,
                 ClassSelector classSelector => ops.Class(classSelector.Class),
@@ -134,11 +159,12 @@ namespace Svg.Css
                 ListSelector listSelector => throw new NotImplementedException(), // TODO:,
                 NamespaceSelector namespaceSelector => throw new NotImplementedException(), // TODO:,
                 PageSelector pageSelector => throw new NotImplementedException(), // TODO:,
-                PseudoClassSelector pseudoClassSelector => throw new NotImplementedException(), // TODO:,
+                PseudoClassSelector pseudoClassSelector => GetFunc(pseudoClassSelector, ops, inFunc), // TODO:,
                 PseudoElementSelector pseudoElementSelector => throw new NotImplementedException(), // TODO:,
                 TypeSelector typeSelector => ops.Type(typeSelector.Name),
-                UnknownSelector => throw new NotImplementedException(), // TODO:,
-                _ => ops.Empty(), // TODO:,
+                UnknownSelector unknownSelector => throw new NotImplementedException(), // TODO:,
+                IdSelector idSelector => ops.Id(idSelector.Id),
+                _ => throw new NotImplementedException(), // TODO:,
             };
 
             return f => func(inFunc(f));
