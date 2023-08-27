@@ -66,7 +66,7 @@ namespace Svg.Css
                 {
                     combinatorFunc = ops.Child();
                 }
-                else if (it.Delimiter == Combinator.Descendent.Delimiter)
+                else if (it.Delimiter == Combinators.Descendent)
                 {
                     combinatorFunc = ops.Descendant();
                 }
@@ -74,19 +74,20 @@ namespace Svg.Css
                 {
                     throw new NotImplementedException();
                 }
-                else if (it.Delimiter == Combinator.AdjacentSibling.Delimiter)
+                else if (it.Delimiter == Combinators.Adjacent)
                 {
                     combinatorFunc = ops.Adjacent();
                 }
-                else if (it.Delimiter == Combinator.Sibling.Delimiter)
+                else if (it.Delimiter == Combinators.Sibling)
                 {
                     combinatorFunc = ops.GeneralSibling();
                 }
-                else if (it.Delimiter == Combinator.Namespace.Delimiter)
+                else if (it.Delimiter == Combinators.Pipe)
                 {
+                    // Namespace
                     throw new NotImplementedException();
                 }
-                else if (it.Delimiter == Combinator.Column.Delimiter)
+                else if (it.Delimiter == Combinators.Column)
                 {
                     throw new NotImplementedException();
                 }
