@@ -66,6 +66,8 @@ namespace Svg.Css
 
             foreach (var it in selector)
             {
+                result = GetFunc(it.Selector, ops, result);
+
                 Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> combinatorFunc;
                 if (it.Delimiter == Combinator.Child.Delimiter)
                 {
@@ -105,7 +107,6 @@ namespace Svg.Css
                     throw new NotImplementedException();
                 }
 
-                result = GetFunc(it.Selector, ops, result);
                 if (combinatorFunc != null)
                 {
                     var result1 = result;
