@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Xml.Linq;
 using Fizzler;
@@ -27,16 +28,28 @@ namespace Svg.Css
             return nodes => Enumerable.Empty<SvgElement>();
         }
 
+        public IEnumerable<SvgElement> DebugNodes(IEnumerable<SvgElement> nodes, [CallerMemberName] string caller = null)
+        {
+            ////Debug.WriteLine(Environment.NewLine);
+            ////Debug.WriteLine(nameof(DebugNodes) + ": " + caller);
+            ////Debug.WriteLine(Environment.NewLine);
+            foreach (var it in nodes)
+            {
+                ////Debug.WriteLine(it.ElementName);
+                yield return it;
+            }
+        }
+
         public Selector<SvgElement> Universal(NamespacePrefix prefix)
         {
             Debug.WriteLine(nameof(Universal));
-            return nodes => nodes;
+            return nodes => DebugNodes(nodes);
         }
 
         public Selector<SvgElement> Id(string id)
         {
             Debug.WriteLine(nameof(Id) + id);
-            return nodes => nodes.Where(n => n.ID == id);
+            return nodes => DebugNodes(nodes).Where(n => n.ID == id);
         }
 
         public Selector<SvgElement> Class(string clazz)

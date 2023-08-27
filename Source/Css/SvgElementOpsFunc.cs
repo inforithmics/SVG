@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Svg.Css
 {
@@ -12,6 +13,18 @@ namespace Svg.Css
         public SvgElementOpsFunc(SvgElementFactory elementFactory)
         {
             _elementFactory = elementFactory;
+        }
+
+        public IEnumerable<SvgElement> DebugNodes(IEnumerable<SvgElement> nodes, [CallerMemberName] string caller = null)
+        {
+            ////Debug.WriteLine(Environment.NewLine);
+            ////Debug.WriteLine(nameof(DebugNodes) + ": " + caller);
+            ////Debug.WriteLine(Environment.NewLine);
+            foreach (var it in nodes)
+            {
+                ////Debug.WriteLine(it.ElementName);
+                yield return it;
+            }
         }
 
         public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Type(string name)
@@ -27,13 +40,13 @@ namespace Svg.Css
         public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Universal()
         {
             Debug.WriteLine(nameof(Universal));
-            return nodes => nodes;
+            return nodes => DebugNodes(nodes);
         }
 
         public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Id(string id)
         {
             Debug.WriteLine(nameof(Id) + id);
-            return nodes => nodes.Where(n => n.ID == id);
+            return nodes => DebugNodes(nodes).Where(n => n.ID == id);
         }
 
         public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Class(string clazz)

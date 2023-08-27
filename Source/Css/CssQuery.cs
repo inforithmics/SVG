@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using ExCSS;
-using Fizzler;
 
 namespace Svg.Css
 {
@@ -11,32 +9,14 @@ namespace Svg.Css
     {
         public static IEnumerable<SvgElement> QuerySelectorAll(this SvgElement elem, ISelector selector, SvgElementFactory elementFactory)
         {
-#if DEBUG
-            var generator = new SelectorGenerator<SvgElement>(new SvgElementOps(elementFactory));
-            Fizzler.Parser.Parse(selector.Text, generator);
-            var debug = generator.Selector(Enumerable.Repeat(elem, 1)).ToList();
-#endif
-
             var input = Enumerable.Repeat(elem, 1);
             var ops = new SvgElementOpsFunc(elementFactory);
 
             var func = GetFunc(selector, ops, ops.Universal());
             var descendants = ops.Descendant();
             var func1 = func;
-            func = f => descendants(func1(f));
-            var result = func(input).Distinct().ToList();
-#if DEBUG
-            var areEqual = result.SequenceEqual(debug);
-            if (!areEqual)
-            {
-                Debug.WriteLine("Are not Equal");
-            }
-            else
-            {
-                Debug.WriteLine("Equal");
-            }
-#endif
-            return result;
+            func = f => func1(descendants(f));
+            return func(input).Distinct();
         }
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(
@@ -136,7 +116,7 @@ namespace Svg.Css
             return result;
         }
 
-        internal static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> inFunc)
+        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> inFunc)
         {
             var func = selector switch
             {

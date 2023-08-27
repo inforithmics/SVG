@@ -111,9 +111,9 @@ namespace Svg.UnitTests
             Assert.AreEqual(expected, actual.ToString());
         }
 
-        ////[TestCase("*.test2", "struct-use-11-f")]
         [Test]
         [TestCase("#testId.test1", "struct-use-11-f")]
+        [TestCase("*.test2", "struct-use-11-f")]
         public void RunSelectorTests(string selector, string baseName)
         {
             var elementFactory = new SvgElementFactory();
@@ -121,52 +121,49 @@ namespace Svg.UnitTests
             string basePath = testSuite;
             var svgPath = Path.Combine(basePath, "svg", baseName + ".svg");
             var styles = new List<ISvgNode>();
-            var svgDocument = SvgDocument.Create<SvgDocument>(new XmlTextReader(File.Open(svgPath, FileMode.Open)), elementFactory, styles);
-
-            var rootNode = new NonSvgElement();
-            rootNode.Children.Add(svgDocument);
-
-            Debug.WriteLine(Environment.NewLine);
-            Debug.WriteLine("Fizzler:\r\n");
-            var fizzlerElements = QuerySelectorFizzlerAll(rootNode, selector, elementFactory);
-            Debug.WriteLine(Environment.NewLine);
-            Debug.WriteLine("ExCss:\r\n");
-            var exCssElements = QuerySelectorExCssAll(rootNode, selector, elementFactory);
-            Debug.WriteLine(Environment.NewLine);
-
-            var areEqual = fizzlerElements.SequenceEqual(exCssElements);
-            if (!areEqual)
+            using (var xmlFragment = File.Open(svgPath, FileMode.Open))
             {
-                Assert.IsTrue(areEqual, "should select the same elements");
-            }
-            else
-            {
-                Assert.IsTrue(areEqual, "should select the same elements");
+                using (var xmlTextReader = new XmlTextReader(xmlFragment))
+                {
+                    var svgDocument = SvgDocument.Create<SvgDocument>(xmlTextReader, elementFactory, styles);
+
+                    var rootNode = new NonSvgElement();
+                    rootNode.Children.Add(svgDocument);
+
+                    Debug.WriteLine(Environment.NewLine);
+                    Debug.WriteLine("Fizzler:\r\n");
+                    var fizzlerElements = QuerySelectorFizzlerAll(rootNode, selector, elementFactory).ToList();
+                    Debug.WriteLine(Environment.NewLine);
+                    Debug.WriteLine("ExCss:\r\n");
+                    var exCssElements = QuerySelectorExCssAll(rootNode, selector, elementFactory).ToList();
+                    Debug.WriteLine(Environment.NewLine);
+
+                    var areEqual = fizzlerElements.SequenceEqual(exCssElements);
+                    if (!areEqual)
+                    {
+                        Assert.IsTrue(areEqual, "should select the same elements");
+                    }
+                    else
+                    {
+                        Assert.IsTrue(areEqual, "should select the same elements");
+                    }
+                }
             }
         }
 
-        private List<SvgElement> QuerySelectorExCssAll(NonSvgElement elem, string selector, SvgElementFactory elementFactory)
+        private IEnumerable<SvgElement> QuerySelectorExCssAll(NonSvgElement elem, string selector, SvgElementFactory elementFactory)
         {
             var stylesheetParser = new StylesheetParser(true, true);
             var stylesheet = stylesheetParser.Parse(selector + " {color:black}");
             var exCssSelector = stylesheet.StyleRules.First().Selector;
-            var input = Enumerable.Repeat(elem, 1);
-            var ops = new SvgElementOpsFunc(elementFactory);
-
-            var func = CssQuery.GetFunc(exCssSelector, ops, ops.Universal());
-            var descendants = ops.Descendant();
-            var func1 = func;
-            func = f => descendants(func1(f));
-            
-            var result = func(input).Distinct().ToList();
-            return result;
+            return elem.QuerySelectorAll(exCssSelector, elementFactory);
         }
 
-        private List<SvgElement> QuerySelectorFizzlerAll(NonSvgElement elem, string selector, SvgElementFactory elementFactory)
+        private IEnumerable<SvgElement> QuerySelectorFizzlerAll(NonSvgElement elem, string selector, SvgElementFactory elementFactory)
         {
             var generator = new SelectorGenerator<SvgElement>(new SvgElementOps(elementFactory));
             Fizzler.Parser.Parse(selector, generator);
-            return generator.Selector(Enumerable.Repeat(elem, 1)).ToList();
+            return generator.Selector(Enumerable.Repeat(elem, 1));
         }
     }
 }
