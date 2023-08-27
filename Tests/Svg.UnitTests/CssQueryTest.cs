@@ -114,6 +114,17 @@ namespace Svg.UnitTests
         [Test]
         [TestCase("#testId.test1", "struct-use-11-f")]
         [TestCase("*.test2", "struct-use-11-f")]
+        [TestCase("circle.test3", "struct-use-11-f")]
+        [TestCase(".descendant circle.test4", "struct-use-11-f")]
+        [TestCase(".child > circle.test5", "struct-use-11-f")]
+        [TestCase(".test6:first-child", "struct-use-11-f")]
+        [TestCase(".sibling + circle.test7", "struct-use-11-f")]
+        [TestCase("circle[cx].test8", "struct-use-11-f")]
+        [TestCase("circle[cx=\"50\"].test9", "struct-use-11-f")]
+        [TestCase("circle[foo~=\"warning1\"].test10", "struct-use-11-f")]
+        [TestCase("circle[lang|=\"en\"].test11", "struct-use-11-f")]
+        [TestCase(".test12", "struct-use-11-f")]
+        [TestCase(".twochildren:first-child", "struct-use-11-f")]
         public void RunSelectorTests(string selector, string baseName)
         {
             var elementFactory = new SvgElementFactory();
