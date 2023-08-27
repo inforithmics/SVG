@@ -76,7 +76,7 @@ namespace Svg.Css
                 }
                 else if (it.Delimiter == Combinator.AdjacentSibling.Delimiter)
                 {
-                    throw new NotImplementedException();
+                    combinatorFunc = ops.Adjacent();
                 }
                 else if (it.Delimiter == Combinator.Sibling.Delimiter)
                 {
