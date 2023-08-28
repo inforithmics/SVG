@@ -141,6 +141,8 @@ namespace Svg.UnitTests
                     var rootNode = new NonSvgElement();
                     rootNode.Children.Add(svgDocument);
 
+                    SvgElementOpsFunc.NodeDebug = SvgElementOps.NodeDebug = nameof(SvgElementOpsFunc.Type);
+
                     Debug.WriteLine(Environment.NewLine);
                     Debug.WriteLine("Fizzler:\r\n");
                     var fizzlerElements = QuerySelectorFizzlerAll(rootNode, selector, elementFactory).ToList();
