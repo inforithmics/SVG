@@ -112,6 +112,41 @@ namespace Svg.UnitTests
         }
 
         [Test]
+        [TestCase("struct-use-11-f")]
+        [TestCase("struct-use-10-f")]
+        [TestCase("styling-css-03-b")]
+        public void RunSelectorTests(string baseName)
+        {
+            var elementFactory = new SvgElementFactory();
+            var testSuite = Path.Combine(ImageTestDataSource.SuiteTestsFolder, "W3CTestSuite");
+            string basePath = testSuite;
+            var svgPath = Path.Combine(basePath, "svg", baseName + ".svg");
+            var styles = new List<ISvgNode>();
+            using (var xmlFragment = File.Open(svgPath, FileMode.Open))
+            {
+                using (var xmlTextReader = new XmlTextReader(xmlFragment))
+                {
+                    var svgDocument = SvgDocument.Create<SvgDocument>(xmlTextReader, elementFactory, styles);
+
+                    var rootNode = new NonSvgElement();
+                    rootNode.Children.Add(svgDocument);
+
+                    if (styles.Any())
+                    {
+                        var cssTotal = string.Join(Environment.NewLine, styles.Select(s => s.Content).ToArray());
+                        var stylesheetParser = new StylesheetParser(true, true);
+                        var stylesheet = stylesheetParser.Parse(cssTotal);
+
+                        foreach (var selector in stylesheet.StyleRules)
+                        {
+                            TestSelector(selector.Selector.Text, rootNode, elementFactory);
+                        }
+                    }
+                }
+            }
+        }
+
+        [Test]
         [TestCase("#testId.test1", "struct-use-11-f")]
         [TestCase("*.test2", "struct-use-11-f")]
         [TestCase("circle.test3", "struct-use-11-f")]
@@ -127,6 +162,17 @@ namespace Svg.UnitTests
         [TestCase("circle[lang|=\"en\"].test11", "struct-use-11-f")]
         [TestCase(".test12", "struct-use-11-f")]
         [TestCase(".twochildren:first-child", "struct-use-11-f")]
+        [TestCase("defs > rect",  "struct-use-10-f")]
+        [TestCase(".testclass1",  "struct-use-10-f")] 
+        [TestCase("#testid1 .testclass1",  "struct-use-10-f")] 
+        [TestCase("g .testClass1",  "struct-use-10-f")] 
+        [TestCase("#g1 .testclass2",  "struct-use-10-f")]
+        [TestCase("g#g1",  "struct-use-10-f")] 
+        [TestCase("#testid2",  "struct-use-10-f")] 
+        [TestCase("g#g2",  "struct-use-10-f")] 
+        [TestCase(".testclass3 > rect",  "struct-use-10-f")] 
+        [TestCase("#testid3 rect",  "struct-use-10-f")] 
+        [TestCase("#testid3 rect#testrect3",  "struct-use-10-f")] 
         public void RunSelectorTests(string selector, string baseName)
         {
             var elementFactory = new SvgElementFactory();
@@ -143,26 +189,31 @@ namespace Svg.UnitTests
                     var rootNode = new NonSvgElement();
                     rootNode.Children.Add(svgDocument);
 
-                    SvgElementOpsFunc.NodeDebug = SvgElementOps.NodeDebug = string.Empty; // nameof(SvgElementOpsFunc.Child);
-
-                    Debug.WriteLine(Environment.NewLine);
-                    Debug.WriteLine("Fizzler:\r\n");
-                    var fizzlerElements = QuerySelectorFizzlerAll(rootNode, selector, elementFactory).ToList();
-                    Debug.WriteLine(Environment.NewLine);
-                    Debug.WriteLine("ExCss:\r\n");
-                    var exCssElements = QuerySelectorExCssAll(rootNode, selector, elementFactory).ToList();
-                    Debug.WriteLine(Environment.NewLine);
-
-                    var areEqual = fizzlerElements.SequenceEqual(exCssElements);
-                    if (!areEqual)
-                    {
-                        Assert.IsTrue(areEqual, "should select the same elements");
-                    }
-                    else
-                    {
-                        Assert.IsTrue(areEqual, "should select the same elements");
-                    }
+                    TestSelector(selector, rootNode, elementFactory);
                 }
+            }
+        }
+
+        private void TestSelector(string selector, NonSvgElement rootNode, SvgElementFactory elementFactory)
+        {
+            SvgElementOpsFunc.NodeDebug = SvgElementOps.NodeDebug = string.Empty; // nameof(SvgElementOpsFunc.Child);
+
+            Debug.WriteLine(Environment.NewLine);
+            Debug.WriteLine("Fizzler:\r\n");
+            var fizzlerElements = QuerySelectorFizzlerAll(rootNode, selector, elementFactory).ToList();
+            Debug.WriteLine(Environment.NewLine);
+            Debug.WriteLine("ExCss:\r\n");
+            var exCssElements = QuerySelectorExCssAll(rootNode, selector, elementFactory).ToList();
+            Debug.WriteLine(Environment.NewLine);
+
+            var areEqual = fizzlerElements.SequenceEqual(exCssElements);
+            if (!areEqual)
+            {
+                Assert.IsTrue(areEqual, "should select the same elements");
+            }
+            else
+            {
+                Assert.IsTrue(areEqual, "should select the same elements");
             }
         }
 
