@@ -66,7 +66,7 @@ namespace Svg.Css
 
             foreach (var it in selector)
             {
-                result = GetFunc(it.Selector, ops, null);
+                result = GetFunc(it.Selector, ops, result);
 
                 Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> combinatorFunc;
                 if (it.Delimiter == Combinator.Child.Delimiter)
