@@ -116,6 +116,8 @@ namespace Svg.UnitTests
         [TestCase("*.test2", "struct-use-11-f")]
         [TestCase("circle.test3", "struct-use-11-f")]
         [TestCase(".descendant circle.test4", "struct-use-11-f")]
+        [TestCase(".child", "struct-use-11-f")]
+        [TestCase("circle.test5", "struct-use-11-f")]
         [TestCase(".child > circle.test5", "struct-use-11-f")]
         [TestCase(".test6:first-child", "struct-use-11-f")]
         [TestCase(".sibling + circle.test7", "struct-use-11-f")]

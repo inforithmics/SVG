@@ -126,7 +126,7 @@ namespace Svg.Css
                 AttrBeginsSelector attrBeginsSelector => ops.AttributePrefixMatch(attrBeginsSelector.Attribute, attrBeginsSelector.Value),
                 AttrContainsSelector attrContainsSelector => ops.AttributeSubstring(attrContainsSelector.Attribute, attrContainsSelector.Value),
                 AttrEndsSelector attrEndsSelector => ops.AttributeSuffixMatch(attrEndsSelector.Attribute, attrEndsSelector.Value),
-                AttrHyphenSelector attrHyphenSelector => ops.AttributeDashMatch(attrHyphenSelector.Value, attrHyphenSelector.Value), // TODO:,
+                AttrHyphenSelector attrHyphenSelector => ops.AttributeDashMatch(attrHyphenSelector.Attribute, attrHyphenSelector.Value), // TODO:,
                 AttrListSelector attrListSelector => ops.AttributeExists(attrListSelector.Attribute), // TODO:,
                 AttrMatchSelector attrMatchSelector => ops.AttributeExact(attrMatchSelector.Attribute, attrMatchSelector.Value),
                 AttrNotMatchSelector attrNotMatchSelector => throw new NotImplementedException(), // TODO:,
