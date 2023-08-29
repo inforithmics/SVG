@@ -62,11 +62,11 @@ namespace Svg.Css
             Func<IEnumerable<SvgElement>,
                 IEnumerable<SvgElement>> inFunc)
         {
-            Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> result = inFunc;
+            Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> result = null;
 
             foreach (var it in selector)
             {
-                result = GetFunc(it.Selector, ops, result);
+                result = GetFunc(it.Selector, ops, null);
 
                 Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> combinatorFunc;
                 if (it.Delimiter == Combinator.Child.Delimiter)
@@ -114,10 +114,15 @@ namespace Svg.Css
                 }
             }
 
-            return result;
+            if (result == null)
+            {
+                return inFunc;
+            }
+
+            return f => result(inFunc(f));
         }
 
-        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> inFunc)
+        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>? inFunc)
         {
             var func = selector switch
             {
@@ -147,6 +152,11 @@ namespace Svg.Css
                 IdSelector idSelector => ops.Id(idSelector.Id),
                 _ => throw new NotImplementedException(), // TODO:,
             };
+
+            if (inFunc == null)
+            {
+                return func;
+            }
 
             return f => func(inFunc(f));
         }
