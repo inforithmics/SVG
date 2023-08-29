@@ -65,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fizzler" Version="1.2.1" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
@@ -86,9 +87,7 @@
     <Compile Remove=".\Resources\svg11.dtd" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="ExCSS" Version="4.1.4" />
-    <PackageReference Include="Fizzler" Version="1.2.1" />
+  <ItemGroup>            
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -102,6 +101,10 @@
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net452'">
     <ProjectReference Include="..\Generators\Svg.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExCSS\src\ExCSS\ExCSS.csproj" />
   </ItemGroup>
 
 </Project>
