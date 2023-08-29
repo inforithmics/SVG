@@ -53,6 +53,11 @@ namespace Svg.Css
                 throw new NotImplementedException();
             }
 
+            if (inFunc == null)
+            {
+                return pseudoFunc;
+            }
+
             return f => pseudoFunc(inFunc(f));
         }
 
@@ -62,11 +67,12 @@ namespace Svg.Css
             Func<IEnumerable<SvgElement>,
                 IEnumerable<SvgElement>> inFunc)
         {
-            Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> result = null;
+            List<Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>> results = new();
+            
 
             foreach (var it in selector)
             {
-                result = GetFunc(it.Selector, ops, result);
+                results.Add(GetFunc(it.Selector, ops, null));
 
                 Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> combinatorFunc;
                 if (it.Delimiter == Combinator.Child.Delimiter)
@@ -109,17 +115,25 @@ namespace Svg.Css
 
                 if (combinatorFunc != null)
                 {
-                    var result1 = result;
-                    result = f => combinatorFunc(result1(f));
+                    results.Add(combinatorFunc);
                 }
             }
 
-            if (result == null)
+            Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> result = inFunc;
+            foreach (var it in results)
             {
-                return inFunc;
+                if (result == null)
+                {
+                    result = it;
+                }
+                else
+                {
+                    var temp = result;
+                    result = f => it(temp(f));
+                }
             }
 
-            return f => result(inFunc(f));
+            return result;
         }
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>? inFunc)
