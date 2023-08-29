@@ -173,6 +173,15 @@ namespace Svg.UnitTests
         [TestCase(".testclass3 > rect",  "struct-use-10-f")] 
         [TestCase("#testid3 rect",  "struct-use-10-f")] 
         [TestCase("#testid3 rect#testrect3",  "struct-use-10-f")] 
+        [TestCase(".mummy",  "styling-css-03-b")]                                     
+        [TestCase(".mummy rect",  "styling-css-03-b")]       
+        [TestCase(".mummy > .thischild",  "styling-css-03-b")]       
+        [TestCase(".child",  "styling-css-03-b")]       
+        [TestCase(".gap > .thischild",  "styling-css-03-b")]       
+        [TestCase(".daddy",  "styling-css-03-b")]       
+        [TestCase(".daddy > .tertius",  "styling-css-03-b")]       
+        [TestCase(".primus + .secundus",  "styling-css-03-b")]       
+        [TestCase(".daddy :first-child",  "styling-css-03-b")]       
         public void RunSelectorTests(string selector, string baseName)
         {
             var elementFactory = new SvgElementFactory();
