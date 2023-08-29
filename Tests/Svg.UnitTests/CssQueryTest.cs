@@ -143,7 +143,7 @@ namespace Svg.UnitTests
                     var rootNode = new NonSvgElement();
                     rootNode.Children.Add(svgDocument);
 
-                    SvgElementOpsFunc.NodeDebug = SvgElementOps.NodeDebug = nameof(SvgElementOpsFunc.Type);
+                    SvgElementOpsFunc.NodeDebug = SvgElementOps.NodeDebug = string.Empty; // nameof(SvgElementOpsFunc.Child);
 
                     Debug.WriteLine(Environment.NewLine);
                     Debug.WriteLine("Fizzler:\r\n");
