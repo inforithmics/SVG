@@ -219,7 +219,7 @@ namespace Svg.UnitTests
 
         private void TestSelector(string selector, NonSvgElement rootNode, SvgElementFactory elementFactory)
         {
-            SvgElementOpsFunc.NodeDebug = SvgElementOps.NodeDebug = string.Empty; // nameof(SvgElementOpsFunc.Child);
+            SvgElementOps.NodeDebug = SvgElementOps.NodeDebug = string.Empty; // nameof(SvgElementOpsFunc.Child);
 
             Debug.WriteLine(Environment.NewLine);
             Debug.WriteLine("Fizzler:\r\n");

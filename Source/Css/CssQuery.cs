@@ -10,7 +10,7 @@ namespace Svg.Css
         public static IEnumerable<SvgElement> QuerySelectorAll(this SvgElement elem, ISelector selector, SvgElementFactory elementFactory)
         {
             var input = Enumerable.Repeat(elem, 1);
-            var ops = new SvgElementOpsFunc(elementFactory);
+            var ops = new SvgElementOps(elementFactory);
 
             var func = GetFunc(selector, ops, ops.Universal());
             var descendants = ops.Descendant();
@@ -21,7 +21,7 @@ namespace Svg.Css
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(
             CompoundSelector selector,
-            SvgElementOpsFunc ops,
+            SvgElementOps ops,
             Func<IEnumerable<SvgElement>,
                 IEnumerable<SvgElement>> inFunc)
         {
@@ -35,7 +35,7 @@ namespace Svg.Css
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(
             PseudoClassSelector selector,
-            SvgElementOpsFunc ops,
+            SvgElementOps ops,
             Func<IEnumerable<SvgElement>,
                 IEnumerable<SvgElement>> inFunc)
         {
@@ -63,7 +63,7 @@ namespace Svg.Css
 
         private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(
             ComplexSelector selector,
-            SvgElementOpsFunc ops,
+            SvgElementOps ops,
             Func<IEnumerable<SvgElement>,
                 IEnumerable<SvgElement>> inFunc)
         {
@@ -136,7 +136,7 @@ namespace Svg.Css
             return result;
         }
 
-        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOpsFunc ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>? inFunc)
+        private static Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GetFunc(ISelector selector, SvgElementOps ops, Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>? inFunc)
         {
             var func = selector switch
             {

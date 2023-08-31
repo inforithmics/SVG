@@ -1,29 +1,20 @@
-﻿using System;
+﻿#if ExCssSelectorDebugging
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Fizzler;
+using System.Xml.Linq;
 
-namespace Svg.UnitTests
+namespace Svg.Css
 {
-    internal class SvgElementOps : IElementOps<SvgElement>
+    internal class SvgElementOps : ICssSelectorOps<SvgElement>
     {
         private readonly SvgElementFactory _elementFactory;
 
         public SvgElementOps(SvgElementFactory elementFactory)
         {
             _elementFactory = elementFactory;
-        }
-
-        public Selector<SvgElement> Type(NamespacePrefix prefix, string name)
-        {
-            Debug.WriteLine(nameof(Type) + name);
-            if (_elementFactory.AvailableElementsDictionary.TryGetValue(name, out var types))
-            {
-                return nodes => DebugNodes(nodes, name).Where(n => types.Contains(n.GetType()));
-            }
-            return nodes => Enumerable.Empty<SvgElement>();
         }
 
         public IEnumerable<SvgElement> DebugNodes(IEnumerable<SvgElement> nodes, string param, [CallerMemberName] string caller = null)
@@ -49,105 +40,91 @@ namespace Svg.UnitTests
 
         public static string NodeDebug { get; set; }
 
-        public Selector<SvgElement> Universal(NamespacePrefix prefix)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Type(string name)
+        {
+            Debug.WriteLine(nameof(Type) + name);
+            if (_elementFactory.AvailableElementsDictionary.TryGetValue(name, out var types))
+            {
+                return nodes => DebugNodes(nodes, name).Where(n => types.Contains(n.GetType()));
+            }
+            return nodes => Enumerable.Empty<SvgElement>();
+        }
+
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Universal()
         {
             Debug.WriteLine(nameof(Universal));
             return nodes => DebugNodes(nodes, string.Empty);
         }
 
-        public Selector<SvgElement> Id(string id)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Id(string id)
         {
             Debug.WriteLine(nameof(Id) + id);
             return nodes => DebugNodes(nodes, id).Where(n => n.ID == id);
         }
 
-        public Selector<SvgElement> Class(string clazz)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Class(string clazz)
         {
             Debug.WriteLine(nameof(Class) + clazz);
-            return AttributeIncludes(NamespacePrefix.None, "class", clazz);
+            return AttributeIncludes("class", clazz);
         }
 
-        public Selector<SvgElement> AttributeExists(NamespacePrefix prefix, string name)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributeExists(string name)
         {
             Debug.WriteLine(nameof(AttributeExists) + name);
             return nodes => DebugNodes(nodes, name).Where(n => n.ContainsAttribute(name));
         }
 
-        public Selector<SvgElement> AttributeExact(NamespacePrefix prefix, string name, string value)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributeExact(string name, string value)
         {
             Debug.WriteLine(nameof(AttributeExact) + name + value);
-            return nodes => DebugNodes(nodes, name + value).Where(n =>
-            {
-                string val = null;
-                return (n.TryGetAttribute(name, out val) && val == value);
-            });
+            return nodes => DebugNodes(nodes, name + value).Where(n => (n.TryGetAttribute(name, out var val) && val == value));
         }
 
-        public Selector<SvgElement> AttributeIncludes(NamespacePrefix prefix, string name, string value)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributeIncludes(string name, string value)
         {
             Debug.WriteLine(nameof(AttributeIncludes) + name + value);
-            return nodes => DebugNodes(nodes, name + value).Where(n =>
-            {
-                string val = null;
-                return (n.TryGetAttribute(name, out val) && val.Split(' ').Contains(value));
-            });
+            return nodes => DebugNodes(nodes, name + value).Where(n => (n.TryGetAttribute(name, out var val) && val.Split(' ').Contains(value)));
         }
 
-        public Selector<SvgElement> AttributeDashMatch(NamespacePrefix prefix, string name, string value)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributeDashMatch(string name, string value)
         {
             Debug.WriteLine(nameof(AttributeDashMatch) + name + value);
             return string.IsNullOrEmpty(value)
-                 ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
-                 : (nodes => DebugNodes(nodes, name + value).Where(n =>
-                    {
-                        string val = null;
-                        return (n.TryGetAttribute(name, out val) && val.Split('-').Contains(value));
-                    }));
+                 ? (Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>)(nodes => Enumerable.Empty<SvgElement>())
+                 : (nodes => DebugNodes(nodes, name + value).Where(n => (n.TryGetAttribute(name, out var val) && val.Split('-').Contains(value))));
         }
 
-        public Selector<SvgElement> AttributePrefixMatch(NamespacePrefix prefix, string name, string value)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributePrefixMatch(string name, string value)
         {
             Debug.WriteLine(nameof(AttributePrefixMatch) + name + value);
             return string.IsNullOrEmpty(value)
-                 ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
-                 : (nodes => DebugNodes(nodes, name + value).Where(n =>
-                     {
-                         string val = null;
-                         return (n.TryGetAttribute(name, out val) && val.StartsWith(value));
-                     }));
+                 ? (Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>)(nodes => Enumerable.Empty<SvgElement>())
+                 : (nodes => DebugNodes(nodes, name + value).Where(n => (n.TryGetAttribute(name, out var val) && val.StartsWith(value))));
         }
 
-        public Selector<SvgElement> AttributeSuffixMatch(NamespacePrefix prefix, string name, string value)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributeSuffixMatch(string name, string value)
         {
             Debug.WriteLine(nameof(AttributeSuffixMatch) + name + value);
             return string.IsNullOrEmpty(value)
-                 ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
-                 : (nodes => DebugNodes(nodes, name + value).Where(n =>
-                 {
-                     string val = null;
-                     return (n.TryGetAttribute(name, out val) && val.EndsWith(value));
-                 }));
+                 ? (Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>)(nodes => Enumerable.Empty<SvgElement>())
+                 : (nodes => DebugNodes(nodes, name + value).Where(n => (n.TryGetAttribute(name, out var val) && val.EndsWith(value))));
         }
 
-        public Selector<SvgElement> AttributeSubstring(NamespacePrefix prefix, string name, string value)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> AttributeSubstring(string name, string value)
         {
             Debug.WriteLine(nameof(AttributeSubstring) + name + value);
             return string.IsNullOrEmpty(value)
-                 ? (Selector<SvgElement>)(nodes => Enumerable.Empty<SvgElement>())
-                 : (nodes => DebugNodes(nodes, name + value).Where(n =>
-                 {
-                     string val = null;
-                     return (n.TryGetAttribute(name, out val) && val.Contains(value));
-                 }));
+                 ? (Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>>)(nodes => Enumerable.Empty<SvgElement>())
+                 : (nodes => DebugNodes(nodes, name + value).Where(n => (n.TryGetAttribute(name, out var val) && val.Contains(value))));
         }
 
-        public Selector<SvgElement> FirstChild()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> FirstChild()
         {
             Debug.WriteLine(nameof(FirstChild));
             return nodes => DebugNodes(nodes, string.Empty).Where(n => n.Parent == null || n.Parent.Children.First() == n);
         }
 
-        public Selector<SvgElement> LastChild()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> LastChild()
         {
             Debug.WriteLine(nameof(LastChild));
             return nodes => DebugNodes(nodes, string.Empty).Where(n => n.Parent == null || n.Parent.Children.Last() == n);
@@ -161,31 +138,31 @@ namespace Svg.UnitTests
             }
         }
 
-        public Selector<SvgElement> NthChild(int a, int b)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> NthChild(int a, int b)
         {
             Debug.WriteLine(nameof(NthChild) + a + b);
             return nodes => DebugNodes(nodes, a.ToString() + b).Where(n => n.Parent != null && GetByIds(n.Parent.Children, (from i in Enumerable.Range(0, n.Parent.Children.Count / a) select a * i + b)).Contains(n));
         }
 
-        public Selector<SvgElement> OnlyChild()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> OnlyChild()
         {
             Debug.WriteLine(nameof(OnlyChild));
             return nodes => DebugNodes(nodes, string.Empty).Where(n => n.Parent == null || n.Parent.Children.Count == 1);
         }
 
-        public Selector<SvgElement> Empty()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Empty()
         {
             Debug.WriteLine(nameof(Empty));
             return nodes => DebugNodes(nodes, string.Empty).Where(n => n.Children.Count == 0);
         }
 
-        public Selector<SvgElement> Child()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Child()
         {
             Debug.WriteLine(nameof(Child));
             return nodes => DebugNodes(nodes, string.Empty).SelectMany(n => n.Children);
         }
 
-        public Selector<SvgElement> Descendant()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Descendant()
         {
             Debug.WriteLine(nameof(Descendant));
             return nodes => DebugNodes(nodes, string.Empty).SelectMany(n => Descendants(n));
@@ -203,13 +180,13 @@ namespace Svg.UnitTests
             }
         }
 
-        public Selector<SvgElement> Adjacent()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> Adjacent()
         {
             Debug.WriteLine(nameof(Adjacent));
             return nodes => DebugNodes(nodes, string.Empty).SelectMany(n => ElementsAfterSelf(n).Take(1));
         }
 
-        public Selector<SvgElement> GeneralSibling()
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> GeneralSibling()
         {
             Debug.WriteLine(nameof(GeneralSibling));
             return nodes => DebugNodes(nodes, string.Empty).SelectMany(n => ElementsAfterSelf(n));
@@ -220,10 +197,11 @@ namespace Svg.UnitTests
             return (self.Parent == null ? Enumerable.Empty<SvgElement>() : self.Parent.Children.Skip(self.Parent.Children.IndexOf(self) + 1));
         }
 
-        public Selector<SvgElement> NthLastChild(int a, int b)
+        public Func<IEnumerable<SvgElement>, IEnumerable<SvgElement>> NthLastChild(int a, int b)
         {
             Debug.WriteLine(nameof(NthLastChild));
             throw new NotImplementedException();
         }
     }
 }
+#endif
