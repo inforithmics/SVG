@@ -193,9 +193,9 @@ namespace Svg.UnitTests
         [TestCase(".st7", "__issue-280-01")]
         [TestCase(".st8", "__issue-280-01")]
         [TestCase(".st9", "__issue-280-01")]
-        [TestCase("rect { fill: green }","styling-css-01-b")]
-        [TestCase(".warning { fill: green }", "styling-css-01-b")]
-        [TestCase(".bar {fill: green}","styling-css-01-b")]
+        [TestCase("rect","styling-css-01-b")]
+        [TestCase(".warning", "styling-css-01-b")]
+        [TestCase(".bar","styling-css-01-b")]
         public void RunSelectorTests(string selector, string baseName)
         {
             var elementFactory = new SvgElementFactory();
